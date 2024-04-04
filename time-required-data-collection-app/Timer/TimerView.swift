@@ -11,6 +11,7 @@ import Alamofire
 struct TimerView: View {
     
     @ObservedObject var cLocation = CLocation()
+//    @ObservedObject var cLocation : CLLocation?
     
     @State var time : Int = 0
 
