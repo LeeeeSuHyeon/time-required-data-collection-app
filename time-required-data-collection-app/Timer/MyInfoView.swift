@@ -106,16 +106,16 @@ struct MyInfoView: View {
             }
             
         }.onAppear(){
-            if let savedData = UserDefaults.standard.data(forKey: "userInfo") {
-                if let userInfo = try? JSONDecoder().decode(UserInfo.self, from: savedData) {
-                    print("Birth: \(userInfo.birth)")
-                    print("Height: \(userInfo.height)")
-                    print("Weight: \(userInfo.weight)")
-                    print("Sex: \(userInfo.sex)")
-                    print("Speed: \(userInfo.speed)")
-                    userInfoSaved = true
-                }
-            }
+//            if let savedData = UserDefaults.standard.data(forKey: "userInfo") {
+//                if let userInfo = try? JSONDecoder().decode(UserInfo.self, from: savedData) {
+//                    print("Birth: \(userInfo.birth)")
+//                    print("Height: \(userInfo.height)")
+//                    print("Weight: \(userInfo.weight)")
+//                    print("Sex: \(userInfo.sex)")
+//                    print("Speed: \(userInfo.speed)")
+//                    userInfoSaved = true
+//                }
+//            }
         }
     }
     
