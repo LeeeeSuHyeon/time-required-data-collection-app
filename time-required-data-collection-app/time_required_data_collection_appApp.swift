@@ -11,7 +11,7 @@ import SwiftUI
 struct time_required_data_collection_appApp: App {
     var body: some Scene {
         WindowGroup {
-            MyInfoView()
+            WeatherExamView()
         }
     }
 }

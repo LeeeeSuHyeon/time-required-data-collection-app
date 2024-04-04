@@ -20,6 +20,9 @@
 		CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */; };
 		CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */; };
 		CBFBBF512BBE81C3009CF45F /* saveTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF502BBE81C3009CF45F /* saveTimeRequest.swift */; };
+		CBFBBF572BBE9043009CF45F /* WeatherExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */; };
+		CBFBBF592BBE987A009CF45F /* ConvertGrid_GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */; };
+		CBFBBF5B2BBE9EB7009CF45F /* MyXMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,11 +38,13 @@
 		CBFBBF402BBE655E009CF45F /* CLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLocation.swift; sourceTree = "<group>"; };
 		CBFBBF422BBE6564009CF45F /* TimerMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerMap.swift; sourceTree = "<group>"; };
 		CBFBBF452BBE66B6009CF45F /* PathData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathData.swift; sourceTree = "<group>"; };
-		CBFBBF472BBE66EE009CF45F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBFBBF482BBE6789009CF45F /* timerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timerRequest.swift; sourceTree = "<group>"; };
 		CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
 		CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		CBFBBF502BBE81C3009CF45F /* saveTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveTimeRequest.swift; sourceTree = "<group>"; };
+		CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherExamView.swift; sourceTree = "<group>"; };
+		CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertGrid_GPS.swift; sourceTree = "<group>"; };
+		CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyXMLParserDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +88,6 @@
 		CBFBBF2D2BBE64E3009CF45F /* time-required-data-collection-app */ = {
 			isa = PBXGroup;
 			children = (
-				CBFBBF472BBE66EE009CF45F /* Info.plist */,
 				CBFBBF442BBE668F009CF45F /* Timer */,
 				CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */,
 				CBFBBF452BBE66B6009CF45F /* PathData.swift */,
@@ -111,6 +115,9 @@
 				CBFBBF422BBE6564009CF45F /* TimerMap.swift */,
 				CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */,
 				CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */,
+				CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */,
+				CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */,
+				CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -255,6 +262,9 @@
 				CBFBBF3D2BBE6555009CF45F /* MyTimer.swift in Sources */,
 				CBFBBF3F2BBE655A009CF45F /* TimerView.swift in Sources */,
 				CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */,
+				CBFBBF592BBE987A009CF45F /* ConvertGrid_GPS.swift in Sources */,
+				CBFBBF5B2BBE9EB7009CF45F /* MyXMLParserDelegate.swift in Sources */,
+				CBFBBF572BBE9043009CF45F /* WeatherExamView.swift in Sources */,
 				CBFBBF512BBE81C3009CF45F /* saveTimeRequest.swift in Sources */,
 				CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */,
 			);
