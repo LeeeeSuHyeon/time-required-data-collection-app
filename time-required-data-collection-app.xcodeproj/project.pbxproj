@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		60057C3F3FD4F6EAAEF08B08 /* Pods_time_required_data_collection_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A1F5C393D786E3DB6736E6 /* Pods_time_required_data_collection_app.framework */; };
+		CB0ED60B2BBEB97700A6BC11 /* CsvFileParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */; };
+		CB0ED60D2BBEBB0E00A6BC11 /* point.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB0ED60C2BBEBB0E00A6BC11 /* point.csv */; };
 		CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */; };
 		CBFBBF332BBE64E4009CF45F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF322BBE64E4009CF45F /* Assets.xcassets */; };
 		CBFBBF362BBE64E4009CF45F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF352BBE64E4009CF45F /* Preview Assets.xcassets */; };
@@ -23,12 +25,15 @@
 		CBFBBF572BBE9043009CF45F /* WeatherExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */; };
 		CBFBBF592BBE987A009CF45F /* ConvertGrid_GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */; };
 		CBFBBF5B2BBE9EB7009CF45F /* MyXMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */; };
+		CBFBBF5D2BBEB647009CF45F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF5C2BBEB647009CF45F /* Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		201BF724596B8A52F85CD1D3 /* Pods-time-required-data-collection-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-time-required-data-collection-app.release.xcconfig"; path = "Target Support Files/Pods-time-required-data-collection-app/Pods-time-required-data-collection-app.release.xcconfig"; sourceTree = "<group>"; };
 		20A1F5C393D786E3DB6736E6 /* Pods_time_required_data_collection_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_time_required_data_collection_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02C75F0251936CDE5A0C43C /* Pods-time-required-data-collection-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-time-required-data-collection-app.debug.xcconfig"; path = "Target Support Files/Pods-time-required-data-collection-app/Pods-time-required-data-collection-app.debug.xcconfig"; sourceTree = "<group>"; };
+		CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvFileParsing.swift; sourceTree = "<group>"; };
+		CB0ED60C2BBEBB0E00A6BC11 /* point.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point.csv; sourceTree = "<group>"; };
 		CBFBBF2B2BBE64E3009CF45F /* time-required-data-collection-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "time-required-data-collection-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = time_required_data_collection_appApp.swift; sourceTree = "<group>"; };
 		CBFBBF322BBE64E4009CF45F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherExamView.swift; sourceTree = "<group>"; };
 		CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertGrid_GPS.swift; sourceTree = "<group>"; };
 		CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyXMLParserDelegate.swift; sourceTree = "<group>"; };
+		CBFBBF5C2BBEB647009CF45F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 			children = (
 				CBFBBF442BBE668F009CF45F /* Timer */,
 				CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */,
+				CB0ED60C2BBEBB0E00A6BC11 /* point.csv */,
 				CBFBBF452BBE66B6009CF45F /* PathData.swift */,
 				CBFBBF322BBE64E4009CF45F /* Assets.xcassets */,
 				CBFBBF342BBE64E4009CF45F /* Preview Content */,
@@ -118,6 +125,8 @@
 				CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */,
 				CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */,
 				CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */,
+				CBFBBF5C2BBEB647009CF45F /* Node.swift */,
+				CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -202,6 +211,7 @@
 			files = (
 				CBFBBF362BBE64E4009CF45F /* Preview Assets.xcassets in Resources */,
 				CBFBBF332BBE64E4009CF45F /* Assets.xcassets in Resources */,
+				CB0ED60D2BBEBB0E00A6BC11 /* point.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +270,7 @@
 				CBFBBF492BBE6789009CF45F /* timerRequest.swift in Sources */,
 				CBFBBF412BBE655E009CF45F /* CLocation.swift in Sources */,
 				CBFBBF3D2BBE6555009CF45F /* MyTimer.swift in Sources */,
+				CB0ED60B2BBEB97700A6BC11 /* CsvFileParsing.swift in Sources */,
 				CBFBBF3F2BBE655A009CF45F /* TimerView.swift in Sources */,
 				CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */,
 				CBFBBF592BBE987A009CF45F /* ConvertGrid_GPS.swift in Sources */,
@@ -267,6 +278,7 @@
 				CBFBBF572BBE9043009CF45F /* WeatherExamView.swift in Sources */,
 				CBFBBF512BBE81C3009CF45F /* saveTimeRequest.swift in Sources */,
 				CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */,
+				CBFBBF5D2BBEB647009CF45F /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
