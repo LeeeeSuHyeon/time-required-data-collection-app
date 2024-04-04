@@ -5,14 +5,14 @@ struct CsvFileParsing: View {
     let csvFilePath = Bundle.main.path(forResource: "point", ofType: "csv")
 
     // CSV 파일을 읽어서 저장할 데이터 모델
-    @State private var csvData: [[String]] = []
+    @State private var csvData: [Node] = []
 
     var body: some View {
         VStack {
             // CSV 파일에서 읽은 데이터 표시
             List {
                 ForEach(csvData, id: \.self) { row in
-                    Text(row.joined(separator: ", "))
+                    Text("\(row.id) \(row.name) \(row.latitude) \(row.longitude)")
                 }
             }
             .onAppear {
@@ -30,12 +30,16 @@ struct CsvFileParsing: View {
     }
 
     // CSV 형식의 문자열을 파싱하여 2차원 배열로 반환
-    func parseCSV(csvString: String) -> [[String]] {
-        var csvData: [[String]] = []
+    func parseCSV(csvString: String) -> [Node] {
+        var csvData: [Node] = []
         let rows = csvString.components(separatedBy: "\n")
         for row in rows {
             let columns = row.components(separatedBy: ",")
-            csvData.append(columns)
+            if columns[0] != "" {
+                let node = Node(latitude: Double(columns[0]) ?? 0, longitude: Double(columns[1]) ?? 0, id: Int(columns[2]) ?? 0, name: columns[3])
+                print(node)
+                csvData.append(node)
+            }
         }
         return csvData
     }
