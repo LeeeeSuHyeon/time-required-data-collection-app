@@ -17,6 +17,8 @@
 		CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF422BBE6564009CF45F /* TimerMap.swift */; };
 		CBFBBF462BBE66B6009CF45F /* PathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF452BBE66B6009CF45F /* PathData.swift */; };
 		CBFBBF492BBE6789009CF45F /* timerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF482BBE6789009CF45F /* timerResponse.swift */; };
+		CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */; };
+		CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CBFBBF452BBE66B6009CF45F /* PathData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathData.swift; sourceTree = "<group>"; };
 		CBFBBF472BBE66EE009CF45F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBFBBF482BBE6789009CF45F /* timerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timerResponse.swift; sourceTree = "<group>"; };
+		CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				CBFBBF3E2BBE655A009CF45F /* TimerView.swift */,
 				CBFBBF402BBE655E009CF45F /* CLocation.swift */,
 				CBFBBF422BBE6564009CF45F /* TimerMap.swift */,
+				CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */,
+				CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -231,11 +237,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBFBBF462BBE66B6009CF45F /* PathData.swift in Sources */,
+				CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */,
 				CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */,
 				CBFBBF492BBE6789009CF45F /* timerResponse.swift in Sources */,
 				CBFBBF412BBE655E009CF45F /* CLocation.swift in Sources */,
 				CBFBBF3D2BBE6555009CF45F /* MyTimer.swift in Sources */,
 				CBFBBF3F2BBE655A009CF45F /* TimerView.swift in Sources */,
+				CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */,
 				CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
