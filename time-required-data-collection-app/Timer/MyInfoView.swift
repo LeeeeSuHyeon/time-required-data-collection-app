@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MyInfoView: View {
-    @State var birth : String = ""
-    @State var height : String = ""
-    @State var weight : String = ""
+    @State private var birthYear = 2000
+    @State private var height = 173
+    @State private var weight = 65
     
     @State private var selectedSexIndex = 0
     private let sex = ["남성", "여성"]
@@ -21,18 +21,20 @@ struct MyInfoView: View {
     @State private var userInfoSaved = false // 사용자 정보가 저장되었는지 여부를 나타내는 상태 변수
     
     // 입력 필드의 유효성을 확인하여 버튼을 활성화/비활성화할 수 있는 computed property
-    var isButtonEnabled: Bool {
-        // 모든 입력 필드가 비어있지 않고, 선택된 성별과 속도가 있다면 버튼을 활성화
-        return birth != "" && height != "" &&  weight != ""
-    }
+//    var isButtonEnabled: Bool {
+//        // 모든 입력 필드가 비어있지 않고, 선택된 성별과 속도가 있다면 버튼을 활성화
+//        return birth != "" && height != "" &&  weight != ""
+//    }
 
     var body: some View {
         NavigationView {
             VStack{
                 VStack(alignment: .leading){
                     Text("출생년도")
-                    TextField(text: $birth){
-                        Text("출생년도")
+                    Picker("출생년도", selection: $birthYear) {
+                        ForEach(1900..<2024, id: \.self) { year in
+                            Text("\(year)")
+                        }
                     }
                     .frame(width: 200, height: 40)
                     .background(Color.gray.opacity(0.2))
@@ -44,8 +46,10 @@ struct MyInfoView: View {
                 HStack{
                     VStack(alignment: .leading){
                         Text("키")
-                        TextField(text: $height){
-                            Text("키")
+                        Picker("키", selection: $height) {
+                            ForEach(100..<250, id: \.self) { height in
+                                Text("\(height) cm")
+                            }
                         }
                         .frame(width: 100, height: 40)
                         .background(Color.gray.opacity(0.2))
@@ -56,8 +60,10 @@ struct MyInfoView: View {
                     
                     VStack(alignment: .leading){
                         Text("몸무게")
-                        TextField(text: $weight){
-                            Text("몸무게")
+                        Picker("몸무게", selection: $weight) {
+                            ForEach(30..<200, id: \.self) { weight in
+                                Text("\(weight) kg")
+                            }
                         }
                         .frame(width: 100, height: 40)
                         .background(Color.gray.opacity(0.2))
@@ -99,29 +105,17 @@ struct MyInfoView: View {
                         })
                         .buttonStyle(.borderedProminent)
                         .padding()
-                        .disabled(!isButtonEnabled) // 버튼을 비활성화할지 여부를 isButtonEnabled에 따라 결정
+//                        .disabled(!isButtonEnabled) // 버튼을 비활성화할지 여부를 isButtonEnabled에 따라 결정
                     }
                 )
 
             }
-            
-        }.onAppear(){
-//            if let savedData = UserDefaults.standard.data(forKey: "userInfo") {
-//                if let userInfo = try? JSONDecoder().decode(UserInfo.self, from: savedData) {
-//                    print("Birth: \(userInfo.birth)")
-//                    print("Height: \(userInfo.height)")
-//                    print("Weight: \(userInfo.weight)")
-//                    print("Sex: \(userInfo.sex)")
-//                    print("Speed: \(userInfo.speed)")
-//                    userInfoSaved = true
-//                }
-//            }
         }
     }
     
     func saveUserInfo() {
         // UserDefaults를 사용하여 사용자가 입력한 정보를 저장
-        let userInfo = UserInfo(birth: birth, height: height, weight: weight, sex: sex[selectedSexIndex], speed: speed[selectedSpeedIndex])
+        let userInfo = UserInfo(birthYear: birthYear, height: height, weight: weight, sex: sex[selectedSexIndex], speed: speed[selectedSpeedIndex])
         if let encoded = try? JSONEncoder().encode(userInfo) {
             UserDefaults.standard.set(encoded, forKey: "userInfo")
         }
@@ -130,7 +124,7 @@ struct MyInfoView: View {
     func printUserInfo() {
         if let savedData = UserDefaults.standard.data(forKey: "userInfo") {
             if let userInfo = try? JSONDecoder().decode(UserInfo.self, from: savedData) {
-                print("Birth: \(userInfo.birth)")
+                print("Birth: \(userInfo.birthYear)")
                 print("Height: \(userInfo.height)")
                 print("Weight: \(userInfo.weight)")
                 print("Sex: \(userInfo.sex)")
