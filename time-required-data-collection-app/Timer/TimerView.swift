@@ -20,8 +20,8 @@ struct TimerView: View {
 
     
     let csv = CsvFileParsing(fileName: "point")
-    var nodes : [CLLocation] {
-        csv.locationData ?? []
+    var nodes : [Node] {
+        csv.csvData
     }
 
     var body: some View {
@@ -69,7 +69,7 @@ struct TimerView: View {
             }
             
             Spacer()
-            TimerMap(coreLocation: cLocation, route: route, nodes : nodes)
+            TimerMap(coreLocation: cLocation, nodes : nodes)
                 .frame(height: 400)
                 .edgesIgnoringSafeArea(.bottom)
                 

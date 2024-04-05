@@ -9,7 +9,6 @@ struct CsvFileParsing {
 
     // CSV 파일을 읽어서 저장할 데이터 모델
     var csvData: [Node] = []
-    
     var locationData : [CLLocation]?
 
     // 초기화자
