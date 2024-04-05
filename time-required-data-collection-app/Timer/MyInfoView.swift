@@ -12,8 +12,8 @@ struct MyInfoView: View {
     @State private var height = 173
     @State private var weight = 65
     
-    @State private var selectedSexIndex = 0
-    private let sex = ["남성", "여성"]
+    @State private var selectedGenderIndex = 0
+    private let gender = ["남성", "여성"]
     
     @State private var selectedSpeedIndex = 0
     private let speed = ["느림", "보통", "빠름"]
@@ -73,9 +73,9 @@ struct MyInfoView: View {
                     
                 }
                 VStack {
-                    Picker(selection: $selectedSexIndex, label: Text("")) {
-                        ForEach(0..<sex.count) { index in
-                            Text(self.sex[index]).tag(index)
+                    Picker(selection: $selectedGenderIndex, label: Text("성별")) {
+                        ForEach(0..<gender.count) { index in
+                            Text(self.gender[index]).tag(index)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
@@ -92,22 +92,20 @@ struct MyInfoView: View {
                 }
                 
                 // NavigationLink를 사용하여 userInfoSaved가 true일 때 TimerView로 이동
-                NavigationLink(
+                Button(action: {
+                    saveUserInfo()
+                    printUserInfo()
+                    userInfoSaved = true
+                }) {
+                    Text("데이터 수집 시작")
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
+                .background(NavigationLink(
                     destination: TimerView(),
                     isActive: $userInfoSaved, // userInfoSaved가 true일 때 자동으로 TimerView로 이동
-                    label: {
-                        Button(action: {
-                            saveUserInfo()
-                            printUserInfo()
-                            userInfoSaved = true
-                        }, label: {
-                            Text("데이터 수집 시작")
-                        })
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-//                        .disabled(!isButtonEnabled) // 버튼을 비활성화할지 여부를 isButtonEnabled에 따라 결정
-                    }
-                )
+                    label: { EmptyView() }
+                ))
 
             }
         }
@@ -115,7 +113,7 @@ struct MyInfoView: View {
     
     func saveUserInfo() {
         // UserDefaults를 사용하여 사용자가 입력한 정보를 저장
-        let userInfo = UserInfo(birthYear: birthYear, height: height, weight: weight, sex: sex[selectedSexIndex], speed: speed[selectedSpeedIndex])
+        let userInfo = UserInfo(birthYear: birthYear, height: height, weight: weight, gender: selectedGenderIndex, walkSpeed: selectedSpeedIndex)
         if let encoded = try? JSONEncoder().encode(userInfo) {
             UserDefaults.standard.set(encoded, forKey: "userInfo")
         }
@@ -127,8 +125,8 @@ struct MyInfoView: View {
                 print("Birth: \(userInfo.birthYear)")
                 print("Height: \(userInfo.height)")
                 print("Weight: \(userInfo.weight)")
-                print("Sex: \(userInfo.sex)")
-                print("Speed: \(userInfo.speed)")
+                print("Gender: \(userInfo.gender)")
+                print("Speed: \(userInfo.walkSpeed)")
             }
         } else {
             print("User info not found in UserDefaults")

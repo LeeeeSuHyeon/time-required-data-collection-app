@@ -11,6 +11,6 @@ struct UserInfo: Codable {
     var birthYear: Int
     var height: Int
     var weight: Int
-    var sex: String
-    var speed: String
+    var gender: Int
+    var walkSpeed: Int
 }

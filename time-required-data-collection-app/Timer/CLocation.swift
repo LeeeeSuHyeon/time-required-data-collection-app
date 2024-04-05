@@ -12,12 +12,22 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var location: CLLocation?
     @Published var time : Int?
-    @Published var timeList: [Int] = []
+    @Published var timeList: [NodeTime] = []
+    
+    var startNode : String = ""
     
     let timer = MyTimer()
     let route = PathData().test
     var index = 0
     var start = true
+    
+    let csv = CsvFileParsing(fileName: "point")
+    var nodes : [Node] {
+        csv.csvData
+    }
+    var locationData : [CLLocation]{
+        csv.locationData
+    }
     
     var locationManager = CLLocationManager()   // locationManager 인스턴스를 생성하여 위치 관련 작업을 수행
     
@@ -49,50 +59,28 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
                DispatchQueue.main.async {
                    self.location = newLocation
                }
-        if start {
-            // route 배열의 크기 만큼만 진행
-            if index <= route.count {
-                // 목표 위치와의 거리 계산
-                let distance = newLocation.distance(from: route[index])
-                print("index : \(index)")
-                print("distance : \(distance)")
-                // 거리가 5미터 이내일 때 타이머 시작
-                if distance <= 5 {
-                
-                    if timeList.isEmpty {
-//                        timeList.append("출발지 도착")
-                        timeList.append(time ?? 0)
-                        timer.startTimer()
-                        index += 1
-                    }
-                    else{ 
-                        time = timer.seconds
-                        timeList.append(time ?? 0)
-                        timer.stopTimer()
-                        timer.startTimer()
-                        index += 1
-                        
-                    }
+        // 현재 위치와 모든 노드 사이의 거리를 구함
+        for (i,node) in nodes.enumerated() {
+            let distance = newLocation.distance(from: locationData[i])
+//            print("node : \(node.name)")
+//            print("distance : \(distance)")
+            if distance <= 5 {
+                if timeList.isEmpty {
+                    startNode = node.name
+                    timer.startTimer()
                 }
-            }
-            else {
-                timer.stopTimer()
-                start = false
-                print("모든 노드 종료")
+                else{
+                    time = timer.seconds
+                    let nodeTime = NodeTime(node1: startNode, node2: node.name, takeTime: time!)
+                    timeList.append(nodeTime)
+                    startNode = node.name   // 시작 노드를 도착 노드로 설정
+                    timer.stopTimer()
+                    timer.startTimer()
+                }
             }
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         DispatchQueue.global().async {
             self.checkUserDeviceLocationServiceAuthorization()
@@ -157,8 +145,7 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
        }
    }
        
-       
-       
+
        // 설정으로 이동하는 알림
        func showRequestLocationServiceAlert() {
            let requestLocationServiceAlert = UIAlertController(title: "위치 정보 이용", message: "위치 서비스를 사용할 수 없습니다.\n디바이스의 '설정 > 개인정보 보호'에서 위치 서비스를 켜주세요.", preferredStyle: .alert)
@@ -167,12 +154,89 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
                    UIApplication.shared.open(appSetting)
                }
            }
-    //        let cancel = UIAlertAction(title: "취소", style: .default) { [weak self] _ in
-    //            async { await self?.reloadData }
-    //        }
-    //        requestLocationServiceAlert.addAction(cancel)
+
            requestLocationServiceAlert.addAction(goSetting)
-           
-//           present(requestLocationServiceAlert, animated: true)
        }
 }
+
+
+
+//class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
+//
+//    @Published var location: CLLocation?
+//    @Published var time : Int?
+//    @Published var timeList: [Int] = []
+//    
+//    let timer = MyTimer()
+//    let route = PathData().test
+//    var index = 0
+//    var start = true
+//    
+//    let csv = CsvFileParsing(fileName: "point")
+//    var nodes : [Node] {
+//        csv.csvData
+//    }
+//    
+//    var locationManager = CLLocationManager()   // locationManager 인스턴스를 생성하여 위치 관련 작업을 수행
+//    
+//
+//    // 초기화 메서드에서 ‘setupLocationManager’ 메서드를 호출하여 locationManager의 설정 초기화
+//    override init() {
+//        super.init()
+//        self.setupLocationManager()
+//    }
+//
+//    func setupLocationManager() {
+//        locationManager.delegate = self                             // locationManager의 delegate를 현재 클래스로 설정
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation   // 위치 정확도를 kCLLocationAccuracyBest로 설정
+//        locationManager.requestWhenInUseAuthorization()             // 위치 서비스를 사용하기 위한 권한 요청
+//
+//        // 위치 서비스가 활성화 되어있으면 위치 업데이트 시작, 현재 위치 좌표 출력
+//        if CLLocationManager.locationServicesEnabled() {
+//            print("위치 서비스 On 상태")
+//            locationManager.startUpdatingLocation()
+//            print(locationManager.location?.coordinate as Any)
+//        } else {
+//            print("위치 서비스 Off 상태")
+//        }
+//    }
+//
+//    // 위치 정보가 업데이트 될 때 호출되는 메서드
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let newLocation = locations.last else { return }
+//               DispatchQueue.main.async {
+//                   self.location = newLocation
+//               }
+//        if start {
+//            // route 배열의 크기 만큼만 진행
+//            if index <= route.count {
+//                // 목표 위치와의 거리 계산
+//                let distance = newLocation.distance(from: route[index])
+//                print("index : \(index)")
+//                print("distance : \(distance)")
+//                // 거리가 5미터 이내일 때 타이머 시작
+//                if distance <= 5 {
+//                
+//                    if timeList.isEmpty {
+////                        timeList.append("출발지 도착")
+//                        timeList.append(time ?? 0)
+//                        timer.startTimer()
+//                        index += 1
+//                    }
+//                    else{
+//                        time = timer.seconds
+//                        timeList.append(time ?? 0)
+//                        timer.stopTimer()
+//                        timer.startTimer()
+//                        index += 1
+//                        
+//                    }
+//                }
+//            }
+//            else {
+//                timer.stopTimer()
+//                start = false
+//                print("모든 노드 종료")
+//            }
+//        }
+//    }

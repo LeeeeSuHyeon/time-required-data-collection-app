@@ -9,7 +9,7 @@ import Foundation
 class MyXMLParserDelegate: NSObject, XMLParserDelegate{
     var currentElement = ""
     var key = ""
-    var items: [[String : String]] = []
+    var items: [String : String] = [:]
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if elementName == "category"{
@@ -24,7 +24,7 @@ class MyXMLParserDelegate: NSObject, XMLParserDelegate{
         if currentElement == "category" &&  (string == "TMP" || string == "POP" || string == "PCP") { // 원하는 태그명을 지정하여 해당 태그의 값을 추출할 수 있습니다.
             key = string
         } else if currentElement == "fcstValue" && key != ""{
-            items.append([key : string])
+            items[key] = string
             key = ""
         }
     }
