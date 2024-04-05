@@ -140,3 +140,5 @@ struct MyInfoView: View {
 #Preview {
     MyInfoView()
 }
+
+

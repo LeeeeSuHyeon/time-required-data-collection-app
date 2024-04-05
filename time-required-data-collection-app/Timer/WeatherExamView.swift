@@ -5,12 +5,88 @@
 //  Created by 이수현 on 4/4/24.
 //
 //
-//import UIKit
+import UIKit
+import Alamofire
+
+
+class WeatherExamView : ObservableObject {
+    
+    let key = "Q1UlVchU%2BjoTRx0JMz1%2F9P4x%2BVVo5o%2FpfmTSLmb3ubV9Kk%2FtFcpTI7J%2Fy4bfoXpra17LrAVL5nMR%2Br6UVv8VNg%3D%3D"
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    var baseDate: String {
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter.string(from: date)
+    }
+    var baseTime: String {
+//        dateFormatter.dateFormat = "HHmm"
+//        return dateFormatter.string(from: date)
+        return "1700"
+    }
+    var latXlngY = convertGRID_GPS(mode: 0, lat_X: 37.455086, lng_Y: 127.133315)
+    
+    var requestURL : String { "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=\(key)&pageNo=1&numOfRows=10&base_date=\(baseDate)&base_time=\(baseTime)&nx=\(latXlngY.x)&ny=\(latXlngY.y)"
+    }
+    
+    func WeatherDataRequest(completion: @escaping (Weather?) -> Void){
+        
+        // API 요청을 보낼 URL 생성
+        guard let url = URL(string: requestURL) else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        
+        AF.request(url, method: .get).responseString {response in
+            // 에러 처리
+            switch response.result {
+                case .success(let value):
+                    // 성공적인 응답 처리
+                    print("성공")
+                    print("value : \(value)")
+                    let data = value.data(using: .utf8)
+                    let parser = XMLParser(data: data!)
+                    var temperature = 0.0
+                    var precipitationProbability = 0.0
+                    var precipitation = 0.0
+                    let delegate = MyXMLParserDelegate(completion: { items in
+                        for (key, value) in items {
+                            if key == "TMP" {
+                                if let doubleValue = Double(value) {
+                                    temperature = doubleValue
+                                }
+                            } else if key == "POP" {
+                                if let doubleValue = Double(value) {
+                                    precipitationProbability = doubleValue
+                                }
+                            } else if key == "PCP" {
+                                if let doubleValue = Double(value) {
+                                    precipitation = doubleValue
+                                }
+                            }
+                        }
+                    })
+                    parser.delegate = delegate
+                    parser.parse()
+                    let weather = Weather(temperature: temperature,
+                                         precipitationProbability: precipitationProbability,
+                                         precipitation: precipitation)
+                   completion(weather)
+    
+            
+            case .failure(let error):
+                // 에러 응답 처리
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+//import SwiftUI
 //import Alamofire
 //
 //
-//class WeatherExamView : ObservableObject {
-//    
+//struct WeatherExamView: View {
 //    let key = "Q1UlVchU%2BjoTRx0JMz1%2F9P4x%2BVVo5o%2FpfmTSLmb3ubV9Kk%2FtFcpTI7J%2Fy4bfoXpra17LrAVL5nMR%2Br6UVv8VNg%3D%3D"
 //    let date = Date()
 //    let dateFormatter = DateFormatter()
@@ -19,25 +95,34 @@
 //        return dateFormatter.string(from: date)
 //    }
 //    var baseTime: String {
-//        dateFormatter.dateFormat = "HHmm"
-//        return dateFormatter.string(from: date)
-////        return "1700"
+////        dateFormatter.dateFormat = "HHmm"
+////        return dateFormatter.string(from: date)
+//        return "1700"
 //    }
 //    var latXlngY = convertGRID_GPS(mode: 0, lat_X: 37.455086, lng_Y: 127.133315)
 //    
-//    var requestURL : String { "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?seviceKey=\(key)&numOfRows=10&pageNo=1&base_date=\(baseDate)&base_time=\(baseTime)&nx=\(latXlngY.x)&ny=\(latXlngY.y)"
+////    var requestURL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=Q1UlVchU%2BjoTRx0JMz1%2F9P4x%2BVVo5o%2FpfmTSLmb3ubV9Kk%2FtFcpTI7J%2Fy4bfoXpra17LrAVL5nMR%2Br6UVv8VNg%3D%3D&pageNo=1&numOfRows=10&dataType=XML&base_date=20240405&base_time=1700&nx=63&ny=124"
+//    
+//    var body: some View {
+//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+//            .onAppear(){
+//                WeatherDataRequest()
+//            }
 //    }
 //    
-//    func WeatherDataRequest(completion: @escaping (Weather?) -> Void){
-//        print("requestURL : \(requestURL)")
+//    func WeatherDataRequest() {
+//        
+//        var requestURL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=\(key)&pageNo=1&numOfRows=10&dataType=XML&base_date=\(baseDate)&base_time=\(baseTime)&nx=63&ny=124"
+//        
+//        
 //        
 //        // API 요청을 보낼 URL 생성
 //        guard let url = URL(string: requestURL) else {
 //            print("Invalid URL")
 //            return
 //        }
-//        
-//        AF.request(url, method: .get).responseString {response in
+//        print(url)
+//        AF.request(url, method: .get).responseString { response in
 //            // 에러 처리
 //            switch response.result {
 //            case .success(let value):
@@ -69,11 +154,9 @@
 //                        }
 //                    }
 //                }
-//                let weather = Weather(temperature: temperature,
-//                                     precipitationProbability: precipitationProbability,
-//                                     precipitation: precipitation)
-//               completion(weather)
-//    
+//                print(temperature, precipitationProbability, precipitation)
+//                
+//                
 //            
 //            case .failure(let error):
 //                // 에러 응답 처리
@@ -82,90 +165,7 @@
 //        }
 //    }
 //}
-
-import SwiftUI
-import Alamofire
-
-
-struct WeatherExamView: View {
-    let key = "Q1UlVchU%2BjoTRx0JMz1%2F9P4x%2BVVo5o%2FpfmTSLmb3ubV9Kk%2FtFcpTI7J%2Fy4bfoXpra17LrAVL5nMR%2Br6UVv8VNg%3D%3D"
-    let date = Date()
-    let dateFormatter = DateFormatter()
-    var baseDate: String {
-        dateFormatter.dateFormat = "yyyyMMdd"
-        return dateFormatter.string(from: date)
-    }
-    var baseTime: String {
-        dateFormatter.dateFormat = "HHmm"
-        return dateFormatter.string(from: date)
-//        return "1700"
-    }
-    var latXlngY = convertGRID_GPS(mode: 0, lat_X: 37.455086, lng_Y: 127.133315)
-    
-    var requestURL : String { "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?seviceKey=\(key)&numOfRows=10&pageNo=1&base_date=\(baseDate)&base_time=\(baseTime)&nx=\(latXlngY.x)&ny=\(latXlngY.y)"
-    }
-    
-    
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .onAppear(){
-                WeatherDataRequest()
-            }
-    }
-    
-    func WeatherDataRequest() {
-        print("requestURL : \(requestURL)")
-        
-        // API 요청을 보낼 URL 생성
-        guard let url = URL(string: requestURL) else {
-            print("Invalid URL")
-            return
-        }
-        
-        AF.request(url, method: .get).responseString { response in
-            // 에러 처리
-            switch response.result {
-            case .success(let value):
-                // 성공적인 응답 처리
-                print("성공")
-                print("value : \(value)")
-                let data = value.data(using: .utf8)
-                let parser = XMLParser(data: data!)
-                let delegate = MyXMLParserDelegate()
-                parser.delegate = delegate
-                parser.parse()
-                let items : [String : String] = delegate.items
-                
-                var temperature = 0.0
-                var precipitationProbability = 0.0
-                var precipitation = 0.0
-                for key in items.keys {
-                    if key == "TMP" {
-                        if let value = items[key], let doubleValue = Double(value) {
-                            temperature = doubleValue
-                        }
-                    } else if key == "POP" {
-                        if let value = items[key], let doubleValue = Double(value) {
-                            precipitationProbability = doubleValue
-                        }
-                    } else if key == "PCP" {
-                        if let value = items[key], let doubleValue = Double(value) {
-                            precipitation = doubleValue
-                        }
-                    }
-                }
-                print(temperature, precipitationProbability, precipitation)
-                
-                
-            
-            case .failure(let error):
-                // 에러 응답 처리
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-    }
-}
-
-#Preview {
-    WeatherExamView()
-}
+//
+//#Preview {
+//    WeatherExamView()
+//}

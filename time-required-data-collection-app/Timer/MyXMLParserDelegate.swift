@@ -11,6 +11,12 @@ class MyXMLParserDelegate: NSObject, XMLParserDelegate{
     var key = ""
     var items: [String : String] = [:]
     
+    var completionHandler: (([String: String]) -> Void)?
+
+    init(completion: (([String: String]) -> Void)?) {
+        self.completionHandler = completion
+    }
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if elementName == "category"{
             currentElement = "category"
@@ -34,6 +40,7 @@ class MyXMLParserDelegate: NSObject, XMLParserDelegate{
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
-        print(items)
+        print("parserDidEndDocument : \(items)")
+        completionHandler!(items)
     }
 }
