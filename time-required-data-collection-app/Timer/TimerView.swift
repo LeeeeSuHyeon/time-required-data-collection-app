@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Alamofire
+import CoreLocation
 
 struct TimerView: View {
     
@@ -14,11 +15,17 @@ struct TimerView: View {
 //    @ObservedObject var cLocation : CLLocation?
     
     @State var time : Int = 0
-
+    
     let route = PathData().test
 
+    
+    let csv = CsvFileParsing(fileName: "point")
+    var nodes : [CLLocation] {
+        csv.locationData ?? []
+    }
+
     var body: some View {
-        if cLocation.location != nil{
+        if cLocation.location != nil && nodes != []{
             Text("노드 간 소요시간 확인 : \(time)")
             
             VStack{
@@ -62,7 +69,7 @@ struct TimerView: View {
             }
             
             Spacer()
-            TimerMap(coreLocation: cLocation, route: route)
+            TimerMap(coreLocation: cLocation, route: route, nodes : nodes)
                 .frame(height: 400)
                 .edgesIgnoringSafeArea(.bottom)
                 
@@ -76,7 +83,7 @@ struct TimerView: View {
             return
         }
         
-        // Alamofire를 사용하여 GET 요청 생성
+        // Alamofire를 사용하여 post 요청 생성
         AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).responseString { response in
             // 에러 처리
             switch response.result {
@@ -89,40 +96,6 @@ struct TimerView: View {
                 print("Error: \(error.localizedDescription)")
             }
         }
-        
-//        AF.request("http://52.79.133.240:8080/main/get", method: .get, headers: nil)
-//            .validate()
-//            .responseDecodable(of: OrderListResponse.self) { [self] response in
-//                switch response.result {
-//                case .success(let response):
-//                    if(response.success == true){
-//                        print("주문목록 조회 성공")
-//                        
-//                        dataList = response.data ?? []
-//                        if dataList.count > 0 {
-//                            for i in 0...(dataList.count - 1) {
-//                                startPlaceList.append(dataList[i].startingPoint)
-//                                endPlaceList.append(dataList[i].arrivingPoint)
-////                                startTimeList.append(dataList[i].startDeliTime)
-////                                endTimeList.append(dataList[i].endDeliTime)
-//                                deliveryTipList.append(dataList[i].deliTip)
-//                                
-//                                let splitStartTime = dataList[i].startDeliTime.split(separator: ":").map{String($0)}
-//                                let startTime = splitStartTime[0] + ":" + splitStartTime[1]
-//                                startTimeList.append(startTime)
-//                                
-//                                let splitEndTime = dataList[i].endDeliTime.split(separator: ":").map{String($0)}
-//                                let endTime = splitEndTime[0] + ":" + splitEndTime[1]
-//                                endTimeList.append(endTime)
-//                                
-//                                print("🔊[DEBUG] \(startTime) \(endTime)")
-//                                
-//                            }
-//                        }
-//                        
-//                        listTable.reloadData()
-//                        
-//                    }
     }
     
     

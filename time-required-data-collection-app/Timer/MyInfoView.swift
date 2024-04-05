@@ -21,10 +21,10 @@ struct MyInfoView: View {
     @State private var userInfoSaved = false // 사용자 정보가 저장되었는지 여부를 나타내는 상태 변수
     
     // 입력 필드의 유효성을 확인하여 버튼을 활성화/비활성화할 수 있는 computed property
-     var isButtonEnabled: Bool {
-         // 모든 입력 필드가 비어있지 않고, 선택된 성별과 속도가 있다면 버튼을 활성화
-         return birth != "" && height != "" &&  weight != ""
-     }
+    var isButtonEnabled: Bool {
+        // 모든 입력 필드가 비어있지 않고, 선택된 성별과 속도가 있다면 버튼을 활성화
+        return birth != "" && height != "" &&  weight != ""
+    }
 
     var body: some View {
         NavigationView {
