@@ -17,7 +17,6 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     var startNode : String = ""
     
     let timer = MyTimer()
-    let route = PathData().test
     var index = 0
     var start = true
     
@@ -71,10 +70,11 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
                 else{
                     time = timer.seconds
+                    timer.stopTimer()
                     let nodeTime = NodeTime(node1: startNode, node2: node.name, takeTime: time!)
                     timeList.append(nodeTime)
                     startNode = node.name   // 시작 노드를 도착 노드로 설정
-                    timer.stopTimer()
+                    
                     timer.startTimer()
                 }
             }

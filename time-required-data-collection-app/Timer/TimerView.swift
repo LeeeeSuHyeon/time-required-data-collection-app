@@ -53,45 +53,48 @@ struct TimerView: View {
             Text("노드 간 소요시간 확인 : \(time)")
                 .onAppear(){
                     fetchWeather()
-                    print("userInfo : \(String(describing: userInfo))")
                 }
-            
-            VStack{
-                ForEach(timeList, id: \.self) { list in
-                    Text("\(list.node1) - \(list.node2): \(list.takeTime)초")
-                        .onAppear(){
-                            let param = saveTimeRequest(
-                                node1: list.node1,
-                                node2: list.node2,
-                                birthYear: Int(userInfo?.birthYear ?? 0),
-                                gender: userInfo?.gender ?? 0,
-                                height: Double(userInfo?.height ?? 0),
-                                weight: Double(userInfo?.weight ?? 0),
-                                walkSpeed: userInfo?.walkSpeed ?? 0,
-                                temperature: weather?.temperature ?? 0  ,
-                                precipitationProbability: weather?.precipitationProbability ?? 0,
-                                precipitation: weather?.precipitation ?? 0,
-                                takeTime: Double(list.takeTime)
-                            )
-                            print("param \(param)")
-                            postData(parameter : param)
-                            
-                        } // end of onAppear()
-                        .padding()
-                } // end of ForEach
-            } // end of VStack
-            .onReceive(cLocation.timer.$seconds) {second in
-                self.time = second
-            }
-            .onReceive(cLocation.$timeList){ timeList in
-                self.timeList = timeList
-            }
-            
-            Spacer()
-            TimerMap(coreLocation: cLocation, nodes : nodes)
-                .frame(height: 400)
-                .edgesIgnoringSafeArea(.bottom)
+            if weather != nil{
+                VStack{
+                    ForEach(timeList, id: \.self) { list in
+                        Text("\(list.node1) - \(list.node2): \(list.takeTime)초")
+                            .onAppear(){
+                                let param = saveTimeRequest(
+                                    node1: list.node1,
+                                    node2: list.node2,
+                                    birthYear: userInfo?.birthYear ?? 0,
+                                    gender: userInfo?.gender ?? 0,
+                                    height: Double(userInfo?.height ?? 0),
+                                    weight: Double(userInfo?.weight ?? 0),
+                                    walkSpeed: userInfo?.walkSpeed ?? 0,
+                                    temperature: weather?.temperature ?? 0,
+                                    precipitationProbability: weather?.precipitationProbability ?? 0,
+                                    precipitation: weather?.precipitation ?? 0,
+                                    takeTime: Double(list.takeTime)
+                                )
+                                print("param \(param)")
+                                postData(parameter : param)
+                                
+                            } // end of onAppear()
+                            .padding()
+                    } // end of ForEach
+                } // end of VStack
+                .onReceive(cLocation.timer.$seconds) {second in
+                    self.time = second
+                }
+                .onReceive(cLocation.$timeList){ timeList in
+                    self.timeList = timeList
+                }
                 
+                Spacer()
+                TimerMap(coreLocation: cLocation, nodes : nodes)
+                    .frame(height: 400)
+                    .edgesIgnoringSafeArea(.bottom)
+            }
+            else{
+                Text("날씨 데이터 불러오는 중")
+            }
+          
         } // end of if
     } // end of body
     

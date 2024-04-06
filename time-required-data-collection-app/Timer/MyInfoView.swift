@@ -106,7 +106,6 @@ struct MyInfoView: View {
                     isActive: $userInfoSaved, // userInfoSaved가 true일 때 자동으로 TimerView로 이동
                     label: { EmptyView() }
                 ))
-
             }
         }
     }
