@@ -55,6 +55,8 @@ struct TimerView: View {
                     fetchWeather()
                 }
             if weather != nil{
+                Text("현재 기온 : \(weather?.temperature ?? 0)")
+                Text("data count : \(timeList.count)")
                 VStack{
                     ForEach(timeList, id: \.self) { list in
                         Text("\(list.node1) - \(list.node2): \(list.takeTime)초")

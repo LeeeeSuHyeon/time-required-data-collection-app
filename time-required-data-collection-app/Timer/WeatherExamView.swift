@@ -19,9 +19,9 @@ class WeatherExamView : ObservableObject {
         return dateFormatter.string(from: date)
     }
     var baseTime: String {
-//        dateFormatter.dateFormat = "HHmm"
-//        return dateFormatter.string(from: date)
-        return "1700"
+        dateFormatter.dateFormat = "HHmm"
+        return dateFormatter.string(from: date)
+//        return "1700"
     }
     var latXlngY = convertGRID_GPS(mode: 0, lat_X: 37.455086, lng_Y: 127.133315)
     
