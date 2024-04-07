@@ -96,7 +96,7 @@ struct TimerView: View {
               
         Spacer()
         TimerMap(coreLocation: cLocation, nodes : nodes)
-            .frame(height: 400)
+            .frame(height: 300)
             .edgesIgnoringSafeArea(.bottom)
 
         } // end of if

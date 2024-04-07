@@ -68,7 +68,7 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
                     if timeList.isEmpty {
                         startNode = node.name
                         timer.startTimer()
-                        timeList.append(NodeTime(node1: "시간 측정 시작", node2: ":", takeTime: 0))
+                        timeList.append(NodeTime(node1: "시간 측정", node2: "시작", takeTime: 0))
                     }
                     else {
                         time = timer.seconds

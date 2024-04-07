@@ -18,11 +18,34 @@ class WeatherExamView : ObservableObject {
         dateFormatter.dateFormat = "yyyyMMdd"
         return dateFormatter.string(from: date)
     }
+//    var baseTime: String {
+//        dateFormatter.dateFormat = "HHmm"
+//        return dateFormatter.string(from: date)
+////        return "1700"
+//    }
+    
     var baseTime: String {
-        dateFormatter.dateFormat = "HHmm"
-        return dateFormatter.string(from: date)
-//        return "1700"
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        
+        if hour < 8 || (hour == 8 && minute < 10) {
+            return "0500"
+        } else if hour < 11 || (hour == 11 && minute < 10) {
+            return "0800"
+        } else if hour < 14 || (hour == 14 && minute < 10) {
+            return "1100"
+        } else if hour < 17 || (hour == 17 && minute < 10) {
+            return "1400"
+        } else if hour < 20 || (hour == 20 && minute < 10) {
+            return "1700"
+        } else if hour < 23 || (hour == 23 && minute < 10) {
+            return "2000"
+        } else {
+            return "2300"
+        }
     }
+
     var latXlngY = convertGRID_GPS(mode: 0, lat_X: 37.455086, lng_Y: 127.133315)
     
     var requestURL : String { "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=\(key)&pageNo=1&numOfRows=10&base_date=\(baseDate)&base_time=\(baseTime)&nx=\(latXlngY.x)&ny=\(latXlngY.y)"
