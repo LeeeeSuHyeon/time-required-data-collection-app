@@ -60,22 +60,24 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
                }
         // 현재 위치와 모든 노드 사이의 거리를 구함
         for (i,node) in nodes.enumerated() {
-            let distance = newLocation.distance(from: locationData[i])
-//            print("node : \(node.name)")
-//            print("distance : \(distance)")
-            if distance <= 5 {
-                if timeList.isEmpty {
-                    startNode = node.name
-                    timer.startTimer()
-                }
-                else{
-                    time = timer.seconds
-                    timer.stopTimer()
-                    let nodeTime = NodeTime(node1: startNode, node2: node.name, takeTime: time!)
-                    timeList.append(nodeTime)
-                    startNode = node.name   // 시작 노드를 도착 노드로 설정
-                    
-                    timer.startTimer()
+            if startNode != node.name {
+                let distance = newLocation.distance(from: locationData[i])
+    //            print("node : \(node.name)")
+    //            print("distance : \(distance)")
+                if distance <= 5 {
+                    if timeList.isEmpty {
+                        startNode = node.name
+                        timer.startTimer()
+                        timeList.append(NodeTime(node1: "시간 측정 시작", node2: ":", takeTime: 0))
+                    }
+                    else {
+                        time = timer.seconds
+                        let nodeTime = NodeTime(node1: startNode, node2: node.name, takeTime: time!)
+                        timeList.append(nodeTime)
+                        startNode = node.name   // 시작 노드를 도착 노드로 설정
+                        timer.stopTimer()
+                        timer.startTimer()
+                    }
                 }
             }
         }

@@ -61,22 +61,23 @@ struct TimerView: View {
                     ForEach(timeList, id: \.self) { list in
                         Text("\(list.node1) - \(list.node2): \(list.takeTime)초")
                             .onAppear(){
-                                let param = saveTimeRequest(
-                                    node1: list.node1,
-                                    node2: list.node2,
-                                    birthYear: userInfo?.birthYear ?? 0,
-                                    gender: userInfo?.gender ?? 0,
-                                    height: Double(userInfo?.height ?? 0),
-                                    weight: Double(userInfo?.weight ?? 0),
-                                    walkSpeed: userInfo?.walkSpeed ?? 0,
-                                    temperature: weather?.temperature ?? 0,
-                                    precipitationProbability: weather?.precipitationProbability ?? 0,
-                                    precipitation: weather?.precipitation ?? 0,
-                                    takeTime: Double(list.takeTime)
-                                )
-                                print("param \(param)")
-                                postData(parameter : param)
-                                
+                                if timeList.count > 1{
+                                    let param = saveTimeRequest(
+                                        node1: list.node1,
+                                        node2: list.node2,
+                                        birthYear: userInfo?.birthYear ?? 0,
+                                        gender: userInfo?.gender ?? 0,
+                                        height: Double(userInfo?.height ?? 0),
+                                        weight: Double(userInfo?.weight ?? 0),
+                                        walkSpeed: userInfo?.walkSpeed ?? 0,
+                                        temperature: weather?.temperature ?? 0,
+                                        precipitationProbability: weather?.precipitationProbability ?? 0,
+                                        precipitation: weather?.precipitation ?? 0,
+                                        takeTime: Double(list.takeTime)
+                                    )
+                                    print("param \(param)")
+                                    postData(parameter : param)
+                                }
                             } // end of onAppear()
                             .padding()
                     } // end of ForEach
