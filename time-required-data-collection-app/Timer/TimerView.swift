@@ -19,7 +19,6 @@ struct TimerView: View {
     
     @State var weather: Weather?
     
-
     // Weather 데이터를 가져오는 함수 호출
     func fetchWeather() {
         weatherExamView.WeatherDataRequest { newWeather in
@@ -57,53 +56,55 @@ struct TimerView: View {
             if weather != nil{
                 Text("현재 기온 : \(weather?.temperature ?? 0)")
                 Text("data count : \(timeList.count)")
-                VStack{
-                    ForEach(timeList, id: \.self) { list in
-                        Text("\(list.node1) - \(list.node2): \(list.takeTime)초")
-                            .onAppear(){
-                                if timeList.count > 1{
-                                    let param = saveTimeRequest(
-                                        node1: list.node1,
-                                        node2: list.node2,
-                                        birthYear: userInfo?.birthYear ?? 0,
-                                        gender: userInfo?.gender ?? 0,
-                                        height: Double(userInfo?.height ?? 0),
-                                        weight: Double(userInfo?.weight ?? 0),
-                                        walkSpeed: userInfo?.walkSpeed ?? 0,
-                                        temperature: weather?.temperature ?? 0,
-                                        precipitationProbability: weather?.precipitationProbability ?? 0,
-                                        precipitation: weather?.precipitation ?? 0,
-                                        takeTime: Double(list.takeTime)
-                                    )
-                                    print("param \(param)")
-                                    postData(parameter : param)
-                                }
-                            } // end of onAppear()
-                            .padding()
-                    } // end of ForEach
-                } // end of VStack
-                .onReceive(cLocation.timer.$seconds) {second in
-                    self.time = second
-                }
-                .onReceive(cLocation.$timeList){ timeList in
-                    self.timeList = timeList
-                }
-                
-                Spacer()
-                TimerMap(coreLocation: cLocation, nodes : nodes)
-                    .frame(height: 400)
-                    .edgesIgnoringSafeArea(.bottom)
-            }
-            else{
-                Text("날씨 데이터 불러오는 중")
-            }
-          
+                ScrollView{
+                    VStack{
+                        ForEach(timeList, id: \.self) { list in
+                            Text("\(list.node1) - \(list.node2): \(list.takeTime)초")
+                                .onAppear(){
+                                    if timeList.count > 1{
+                                        let param = saveTimeRequest(
+                                            node1: list.node1,
+                                            node2: list.node2,
+                                            birthYear: userInfo?.birthYear ?? 0,
+                                            gender: userInfo?.gender ?? 0,
+                                            height: Double(userInfo?.height ?? 0),
+                                            weight: Double(userInfo?.weight ?? 0),
+                                            walkSpeed: userInfo?.walkSpeed ?? 0,
+                                            temperature: weather?.temperature ?? 0,
+                                            precipitationProbability: weather?.precipitationProbability ?? 0,
+                                            precipitation: weather?.precipitation ?? 0,
+                                            takeTime: Double(list.takeTime)
+                                        )
+                                        print("param \(param)")
+                                        postData(parameter : param)
+                                    }
+                                } // end of onAppear()
+                                .padding()
+                        } // end of ForEach
+                    } // end of VStack
+                    .onReceive(cLocation.timer.$seconds) {second in
+                        self.time = second
+                    }
+                    .onReceive(cLocation.$timeList){ timeList in
+                        self.timeList = timeList
+                    }
+                } // end of ScrollView
+        } // end of if weather != nil
+        else{
+            Text("날씨 데이터 불러오는 중")
+        }
+              
+        Spacer()
+        TimerMap(coreLocation: cLocation, nodes : nodes)
+            .frame(height: 400)
+            .edgesIgnoringSafeArea(.bottom)
+
         } // end of if
     } // end of body
     
     func postData(parameter : saveTimeRequest) {
         // API 요청을 보낼 URL 생성
-        guard let url = URL(string: "https://e4d8-210-119-237-40.ngrok-free.app/saveTime") else {
+        guard let url = URL(string: "https://a065-58-143-1-4.ngrok-free.app/saveTime") else {
             print("Invalid URL")
             return
         }
