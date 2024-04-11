@@ -18,11 +18,6 @@ class WeatherExamView : ObservableObject {
         dateFormatter.dateFormat = "yyyyMMdd"
         return dateFormatter.string(from: date)
     }
-//    var baseTime: String {
-//        dateFormatter.dateFormat = "HHmm"
-//        return dateFormatter.string(from: date)
-////        return "1700"
-//    }
     
     var baseTime: String {
         let calendar = Calendar.current

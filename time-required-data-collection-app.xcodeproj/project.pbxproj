@@ -12,6 +12,7 @@
 		CB0ED60D2BBEBB0E00A6BC11 /* point.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB0ED60C2BBEBB0E00A6BC11 /* point.csv */; };
 		CB0ED6102BBFD02000A6BC11 /* NodeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED60F2BBFD02000A6BC11 /* NodeTime.swift */; };
 		CB0ED6122BBFD82C00A6BC11 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED6112BBFD82C00A6BC11 /* Weather.swift */; };
+		CB8D093F2BC77058002F16D5 /* point2.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB8D093E2BC77057002F16D5 /* point2.csv */; };
 		CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */; };
 		CBFBBF332BBE64E4009CF45F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF322BBE64E4009CF45F /* Assets.xcassets */; };
 		CBFBBF362BBE64E4009CF45F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF352BBE64E4009CF45F /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		CB0ED60C2BBEBB0E00A6BC11 /* point.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point.csv; sourceTree = "<group>"; };
 		CB0ED60F2BBFD02000A6BC11 /* NodeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTime.swift; sourceTree = "<group>"; };
 		CB0ED6112BBFD82C00A6BC11 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		CB8D093E2BC77057002F16D5 /* point2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point2.csv; sourceTree = "<group>"; };
 		CBFBBF2B2BBE64E3009CF45F /* time-required-data-collection-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "time-required-data-collection-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = time_required_data_collection_appApp.swift; sourceTree = "<group>"; };
 		CBFBBF322BBE64E4009CF45F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				CBFBBF442BBE668F009CF45F /* Timer */,
 				CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */,
 				CB0ED60C2BBEBB0E00A6BC11 /* point.csv */,
+				CB8D093E2BC77057002F16D5 /* point2.csv */,
 				CBFBBF452BBE66B6009CF45F /* PathData.swift */,
 				CBFBBF322BBE64E4009CF45F /* Assets.xcassets */,
 				CBFBBF342BBE64E4009CF45F /* Preview Content */,
@@ -223,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8D093F2BC77058002F16D5 /* point2.csv in Resources */,
 				CBFBBF362BBE64E4009CF45F /* Preview Assets.xcassets in Resources */,
 				CBFBBF332BBE64E4009CF45F /* Assets.xcassets in Resources */,
 				CB0ED60D2BBEBB0E00A6BC11 /* point.csv in Resources */,

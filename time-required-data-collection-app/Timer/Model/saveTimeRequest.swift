@@ -19,5 +19,4 @@ struct saveTimeRequest : Encodable {
     var precipitationProbability : Double
     var precipitation : Double
     var takeTime : Double
-  
 }

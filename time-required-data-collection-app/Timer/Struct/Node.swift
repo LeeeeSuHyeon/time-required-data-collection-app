@@ -9,6 +9,5 @@ import Foundation
 struct Node : Hashable{
     var latitude : Double
     var longitude : Double
-    var id : Int
     var name : String
 }

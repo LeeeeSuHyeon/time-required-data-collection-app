@@ -48,6 +48,7 @@ struct TimerMapView: UIViewRepresentable {
             marker.position = NMGLatLng(lat: node.latitude, lng: node.longitude) // 마커 위치 지정
             marker.width = 20
             marker.height = 20
+            marker.captionText = node.name
             marker.mapView = mapView.mapView // 마커를 표시할 뷰 지정
         }
      

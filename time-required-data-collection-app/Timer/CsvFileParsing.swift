@@ -33,8 +33,8 @@ struct CsvFileParsing {
         let rows = csvString.components(separatedBy: "\n")
         for row in rows {
             let columns = row.components(separatedBy: ",")
-            if columns.count >= 4, let latitude = Double(columns[0]), let longitude = Double(columns[1]), let id = Int(columns[2]) {
-                let node = Node(latitude: latitude, longitude: longitude, id: id, name: columns[3])
+            if columns.count >= 5, let latitude = Double(columns[0]), let longitude = Double(columns[1]) {
+                let node = Node(latitude: latitude, longitude: longitude, name: columns[4])
                 csvData.append(node)
             }
         }

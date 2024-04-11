@@ -42,7 +42,7 @@ struct TimerView: View {
         }
     }
     
-    let csv = CsvFileParsing(fileName: "point")
+    let csv = CsvFileParsing(fileName: "point2")
     var nodes : [Node] {
         csv.csvData
     }
@@ -54,8 +54,12 @@ struct TimerView: View {
                     fetchWeather()
                 }
             if weather != nil{
-                Text("현재 기온 : \(weather?.temperature ?? 0)")
-                Text("data count : \(timeList.count)")
+//                Text("현재 기온 : \(weather?.temperature ?? 0)")
+//                Text("강수량 : \(weather?.precipitation ?? 0)")
+//                Text("강수확률 : \(weather?.precipitationProbability ?? 0)")
+                Text("위도 : \(String(cLocation.location!.coordinate.latitude))")
+                Text("경도 : \(String(cLocation.location!.coordinate.longitude))")
+                Text("고도 : \(String(cLocation.location!.altitude))")
                 ScrollView{
                     VStack{
                         ForEach(timeList, id: \.self) { list in
