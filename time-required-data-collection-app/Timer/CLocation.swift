@@ -20,7 +20,7 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     var index = 0
     var start = true
     
-    let csv = CsvFileParsing(fileName: "point")
+    let csv = CsvFileParsing(fileName: "point3")
     var nodes : [Node] {
         csv.csvData
     }
@@ -62,8 +62,6 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
         for (i,node) in nodes.enumerated() {
             if startNode != node.name {
                 let distance = newLocation.distance(from: locationData[i])
-    //            print("node : \(node.name)")
-    //            print("distance : \(distance)")
                 if distance <= 5 {
                     if timeList.isEmpty {
                         startNode = node.name

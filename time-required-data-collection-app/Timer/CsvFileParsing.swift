@@ -32,7 +32,8 @@ struct CsvFileParsing {
         var csvData: [Node] = []
         let rows = csvString.components(separatedBy: "\n")
         for row in rows {
-            let columns = row.components(separatedBy: ",")
+            let cleanRow = row.replacingOccurrences(of: "\r", with: "")
+            let columns = cleanRow.components(separatedBy: ",")
             if columns.count >= 5, let latitude = Double(columns[0]), let longitude = Double(columns[1]) {
                 let node = Node(latitude: latitude, longitude: longitude, name: columns[4])
                 csvData.append(node)

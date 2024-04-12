@@ -42,7 +42,7 @@ struct TimerView: View {
         }
     }
     
-    let csv = CsvFileParsing(fileName: "point2")
+    let csv = CsvFileParsing(fileName: "point3")
     var nodes : [Node] {
         csv.csvData
     }
@@ -54,12 +54,13 @@ struct TimerView: View {
                     fetchWeather()
                 }
             if weather != nil{
-//                Text("현재 기온 : \(weather?.temperature ?? 0)")
+                Text("현재 기온 : \(weather?.temperature ?? 0)")
+                Text("데이터 측정 개수 : \(timeList.count)개")
 //                Text("강수량 : \(weather?.precipitation ?? 0)")
 //                Text("강수확률 : \(weather?.precipitationProbability ?? 0)")
-                Text("위도 : \(String(cLocation.location!.coordinate.latitude))")
-                Text("경도 : \(String(cLocation.location!.coordinate.longitude))")
-                Text("고도 : \(String(cLocation.location!.altitude))")
+//                Text("위도 : \(String(cLocation.location!.coordinate.latitude))")
+//                Text("경도 : \(String(cLocation.location!.coordinate.longitude))")
+//                Text("고도 : \(String(cLocation.location!.altitude))")
                 ScrollView{
                     VStack{
                         ForEach(timeList, id: \.self) { list in
@@ -108,7 +109,7 @@ struct TimerView: View {
     
     func postData(parameter : saveTimeRequest) {
         // API 요청을 보낼 URL 생성
-        guard let url = URL(string: "https://a065-58-143-1-4.ngrok-free.app/saveTime") else {
+        guard let url = URL(string: "https://f06a-58-121-110-235.ngrok-free.app/api/data/get") else {
             print("Invalid URL")
             return
         }
