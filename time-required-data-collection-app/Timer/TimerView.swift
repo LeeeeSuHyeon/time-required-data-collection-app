@@ -109,7 +109,7 @@ struct TimerView: View {
     
     func postData(parameter : saveTimeRequest) {
         // API 요청을 보낼 URL 생성
-        guard let url = URL(string: "https://f06a-58-121-110-235.ngrok-free.app/api/data/get") else {
+        guard let url = URL(string: "ceprj.gachon.ac.kr:60002/api/data/get") else {
             print("Invalid URL")
             return
         }
