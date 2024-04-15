@@ -78,7 +78,9 @@ class WeatherExamView : ObservableObject {
                                     precipitationProbability = doubleValue
                                 }
                             } else if key == "PCP" {
-                                if let doubleValue = Double(value) {
+                                let newValue = String(value.dropLast(3))
+                                print(newValue) // 출력: "1"
+                                if let doubleValue = Double(newValue) {
                                     precipitation = doubleValue
                                 }
                             }
