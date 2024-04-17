@@ -14,17 +14,36 @@ class WeatherExamView : ObservableObject {
     let key = "Q1UlVchU%2BjoTRx0JMz1%2F9P4x%2BVVo5o%2FpfmTSLmb3ubV9Kk%2FtFcpTI7J%2Fy4bfoXpra17LrAVL5nMR%2Br6UVv8VNg%3D%3D"
     let date = Date()
     let dateFormatter = DateFormatter()
+    
+    
     var baseDate: String {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        
+        // 오전 12시 (0시)부터 02시 10분까지는 하루 전의 날짜로 반환
+        if hour == 0 || (hour == 2 && minute <= 10) {
+            let yesterday = calendar.date(byAdding: .day, value: -1, to: date)!
+            dateFormatter.dateFormat = "yyyyMMdd"
+            return dateFormatter.string(from: yesterday)
+        }
+        
+        // 그 외의 경우는 현재 날짜를 반환
         dateFormatter.dateFormat = "yyyyMMdd"
         return dateFormatter.string(from: date)
     }
+
     
     var baseTime: String {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         
-        if hour < 8 || (hour == 8 && minute < 10) {
+        if hour < 2 || hour == 2 && minute < 10 {
+            return "2300"
+        } else if hour < 5 || (hour == 5 && minute < 10)  {
+            return "0200"
+        } else if hour < 8 || (hour == 8 && minute < 10) {
             return "0500"
         } else if hour < 11 || (hour == 11 && minute < 10) {
             return "0800"
@@ -36,7 +55,7 @@ class WeatherExamView : ObservableObject {
             return "1700"
         } else if hour < 23 || (hour == 23 && minute < 10) {
             return "2000"
-        } else {
+        } else{
             return "2300"
         }
     }

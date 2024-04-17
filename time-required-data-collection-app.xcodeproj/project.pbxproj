@@ -437,7 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"time-required-data-collection-app/Preview Content\"";
-				DEVELOPMENT_TEAM = XW6H6BYJ53;
+				DEVELOPMENT_TEAM = X7TYNR98TC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "time-required-data-collection-app/Info.plist";
@@ -471,7 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"time-required-data-collection-app/Preview Content\"";
-				DEVELOPMENT_TEAM = XW6H6BYJ53;
+				DEVELOPMENT_TEAM = X7TYNR98TC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "time-required-data-collection-app/Info.plist";
