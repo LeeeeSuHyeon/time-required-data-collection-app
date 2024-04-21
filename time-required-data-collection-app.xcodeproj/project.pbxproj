@@ -311,6 +311,7 @@
 /* Begin XCBuildConfiguration section */
 		CBFBBF372BBE64E4009CF45F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B02C75F0251936CDE5A0C43C /* Pods-time-required-data-collection-app.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -374,6 +375,7 @@
 		};
 		CBFBBF382BBE64E4009CF45F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 201BF724596B8A52F85CD1D3 /* Pods-time-required-data-collection-app.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -454,7 +456,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.ac.indck.hyun.time-required-data-collection-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kr.ac.indck.hyun.time-required-data-collection-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -488,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.ac.indck.hyun.time-required-data-collection-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kr.ac.indck.hyun.time-required-data-collection-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

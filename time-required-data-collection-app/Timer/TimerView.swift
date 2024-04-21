@@ -54,7 +54,7 @@ struct TimerView: View {
                     fetchWeather()
                 }
             if weather != nil{
-                Text("현재 기온 : \(weather?.temperature ?? 0)")
+                Text("기온: \(Int(weather?.temperature ?? 0))도, 강수량: \(String(format: "%.1f", weather?.precipitation ?? 0))mm, 강수 확률: \(Int(weather?.precipitationProbability ?? 0))%")
                 Text("데이터 측정 개수 : \(timeList.count)개")
 //                Text("강수량 : \(weather?.precipitation ?? 0)")
 //                Text("강수확률 : \(weather?.precipitationProbability ?? 0)")
