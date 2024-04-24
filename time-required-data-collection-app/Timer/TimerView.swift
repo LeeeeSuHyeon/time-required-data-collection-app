@@ -18,6 +18,7 @@ struct TimerView: View {
     @State var timeList : [NodeTime] = []
     
     @State var weather: Weather?
+    @State private var showAlert = false // 상태 변수 추가
     
     // Weather 데이터를 가져오는 함수 호출
     func fetchWeather() {
@@ -94,6 +95,9 @@ struct TimerView: View {
                         self.timeList = timeList
                     }
                 } // end of ScrollView
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("서버 연결 실패"), message: Text("서버에 연결할 수 없습니다."), dismissButton: .default(Text("확인")))
+                }
         } // end of if weather != nil
         else{
             Text("날씨 데이터 불러오는 중")
@@ -125,6 +129,7 @@ struct TimerView: View {
             case .failure(let error):
                 // 에러 응답 처리
                 print("Error: \(error.localizedDescription)")
+                showAlert = true
             } // end of switch
         } // end of AF.request
     } // end of postData()

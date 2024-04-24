@@ -14,6 +14,7 @@
 		CB0ED6122BBFD82C00A6BC11 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED6112BBFD82C00A6BC11 /* Weather.swift */; };
 		CB8D093F2BC77058002F16D5 /* point2.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB8D093E2BC77057002F16D5 /* point2.csv */; };
 		CB8D09412BC8F0B4002F16D5 /* point3.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB8D09402BC8F0B4002F16D5 /* point3.csv */; };
+		CBEA32F22BD66EDC0083D271 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEA32F12BD66EDC0083D271 /* TestView.swift */; };
 		CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */; };
 		CBFBBF332BBE64E4009CF45F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF322BBE64E4009CF45F /* Assets.xcassets */; };
 		CBFBBF362BBE64E4009CF45F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFBBF352BBE64E4009CF45F /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		CB0ED6112BBFD82C00A6BC11 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CB8D093E2BC77057002F16D5 /* point2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point2.csv; sourceTree = "<group>"; };
 		CB8D09402BC8F0B4002F16D5 /* point3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point3.csv; sourceTree = "<group>"; };
+		CBEA32F12BD66EDC0083D271 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		CBFBBF2B2BBE64E3009CF45F /* time-required-data-collection-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "time-required-data-collection-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = time_required_data_collection_appApp.swift; sourceTree = "<group>"; };
 		CBFBBF322BBE64E4009CF45F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */,
 				CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */,
 				CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */,
+				CBEA32F12BD66EDC0083D271 /* TestView.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */,
 				CBFBBF492BBE6789009CF45F /* timerRequest.swift in Sources */,
 				CBFBBF412BBE655E009CF45F /* CLocation.swift in Sources */,
+				CBEA32F22BD66EDC0083D271 /* TestView.swift in Sources */,
 				CBFBBF3D2BBE6555009CF45F /* MyTimer.swift in Sources */,
 				CB0ED60B2BBEB97700A6BC11 /* CsvFileParsing.swift in Sources */,
 				CBFBBF3F2BBE655A009CF45F /* TimerView.swift in Sources */,
