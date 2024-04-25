@@ -23,7 +23,6 @@
 		CBFBBF412BBE655E009CF45F /* CLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF402BBE655E009CF45F /* CLocation.swift */; };
 		CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF422BBE6564009CF45F /* TimerMap.swift */; };
 		CBFBBF462BBE66B6009CF45F /* PathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF452BBE66B6009CF45F /* PathData.swift */; };
-		CBFBBF492BBE6789009CF45F /* timerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF482BBE6789009CF45F /* timerRequest.swift */; };
 		CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */; };
 		CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */; };
 		CBFBBF512BBE81C3009CF45F /* saveTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFBBF502BBE81C3009CF45F /* saveTimeRequest.swift */; };
@@ -53,7 +52,6 @@
 		CBFBBF402BBE655E009CF45F /* CLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLocation.swift; sourceTree = "<group>"; };
 		CBFBBF422BBE6564009CF45F /* TimerMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerMap.swift; sourceTree = "<group>"; };
 		CBFBBF452BBE66B6009CF45F /* PathData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathData.swift; sourceTree = "<group>"; };
-		CBFBBF482BBE6789009CF45F /* timerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timerRequest.swift; sourceTree = "<group>"; };
 		CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
 		CBFBBF4C2BBE7756009CF45F /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		CBFBBF502BBE81C3009CF45F /* saveTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveTimeRequest.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 		CBFBBF4E2BBE8195009CF45F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CBFBBF482BBE6789009CF45F /* timerRequest.swift */,
 				CBFBBF502BBE81C3009CF45F /* saveTimeRequest.swift */,
 			);
 			path = Model;
@@ -293,7 +290,6 @@
 				CB0ED6122BBFD82C00A6BC11 /* Weather.swift in Sources */,
 				CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */,
 				CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */,
-				CBFBBF492BBE6789009CF45F /* timerRequest.swift in Sources */,
 				CBFBBF412BBE655E009CF45F /* CLocation.swift in Sources */,
 				CBEA32F22BD66EDC0083D271 /* TestView.swift in Sources */,
 				CBFBBF3D2BBE6555009CF45F /* MyTimer.swift in Sources */,

@@ -11,7 +11,7 @@ import CoreLocation
 
 struct TimerView: View {
     
-    @ObservedObject var cLocation = CLocation()
+    @ObservedObject var cLocation: CLocation
     @ObservedObject var weatherExamView = WeatherExamView()
     
     @State var time : Int = 0
@@ -19,6 +19,10 @@ struct TimerView: View {
     
     @State var weather: Weather?
     @State private var showAlert = false // 상태 변수 추가
+    
+    init(){
+        cLocation = CLocation()
+    }
     
     // Weather 데이터를 가져오는 함수 호출
     func fetchWeather() {
@@ -109,6 +113,14 @@ struct TimerView: View {
             .edgesIgnoringSafeArea(.bottom)
 
         } // end of if
+        else{
+            ProgressView(label: {
+                Text("위치 서비스 활성화 중")
+            })
+                .onAppear(){
+                    cLocation.setupLocationManager()
+                }
+        }
     } // end of body
     
     func postData(parameter : saveTimeRequest) {
@@ -134,55 +146,3 @@ struct TimerView: View {
         } // end of AF.request
     } // end of postData()
 } // end of TimerView()
-
-
-//var body: some View {
-//    if cLocation.location != nil && nodes != []{
-//        Text("노드 간 소요시간 확인 : \(time)")
-//        
-//        VStack{
-//            ForEach(0..<cLocation.timeList.count, id: \.self) { index in
-//                Text("노드 \(index) - 노드\(index + 1): \(self.cLocation.timeList[index])초")
-//                    .onAppear(){
-//                        if index != 0 {
-//                            let param = TimerRequest(
-//                                point1_x: Double(route[index - 1].coordinate.latitude),
-//                                point1_y: Double(route[index - 1].coordinate.longitude),
-//                                point2_x: Double(route[index].coordinate.latitude),
-//                                point2_y: Double(route[index].coordinate.longitude),
-//                                takeTime: Double(self.cLocation.timeList[index])
-//                            )
-//                            print("param \(param)")
-//                            postData(parameter : param)
-//                        }
-//                    }
-//                
-//                if(route.count - 1 == index){
-//                    Text("모든 노드 종료")
-//                        .onAppear(){
-//                            let param = TimerRequest(
-//                                point1_x: Double(route[index - 1].coordinate.latitude),
-//                                point1_y: Double(route[index - 1].coordinate.longitude),
-//                                point2_x: Double(route[index].coordinate.latitude),
-//                                point2_y: Double(route[index].coordinate.longitude),
-//                                takeTime: Double(self.cLocation.timeList[index])
-//                            )
-//                            print("param \(param)")
-//                            postData(parameter : param)
-//                        
-//                        }
-//                }
-//                
-//            }
-//            .padding()
-//        }
-//        .onReceive(cLocation.timer.$seconds) { second in
-//            self.time = second
-//        }
-//        
-//        Spacer()
-//        TimerMap(coreLocation: cLocation, nodes : nodes)
-//            .frame(height: 400)
-//            .edgesIgnoringSafeArea(.bottom)
-//            
-//    }
