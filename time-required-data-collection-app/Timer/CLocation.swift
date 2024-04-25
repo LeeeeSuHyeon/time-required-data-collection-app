@@ -156,4 +156,8 @@ class CLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
 
            requestLocationServiceAlert.addAction(goSetting)
        }
+    
+    func stopTimer(){
+        timer.stopTimer()
+    }
 }

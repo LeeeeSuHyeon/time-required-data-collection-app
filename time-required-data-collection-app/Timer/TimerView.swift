@@ -18,7 +18,10 @@ struct TimerView: View {
     @State var timeList : [NodeTime] = []
     
     @State var weather: Weather?
+    @State var count = 0
+    
     @State private var showAlert = false // 상태 변수 추가
+    @State var endButton = false    // 수집 종료 버튼
     
     init(){
         cLocation = CLocation()
@@ -60,7 +63,7 @@ struct TimerView: View {
                 }
             if weather != nil{
                 Text("기온: \(Int(weather?.temperature ?? 0))도, 강수량: \(String(format: "%.1f", weather?.precipitation ?? 0))mm, 강수 확률: \(Int(weather?.precipitationProbability ?? 0))%")
-                Text("데이터 측정 개수 : \(timeList.count)개")
+                Text("데이터 측정 개수(DB 저장 성공) : \(count)개")
 //                Text("강수량 : \(weather?.precipitation ?? 0)")
 //                Text("강수확률 : \(weather?.precipitationProbability ?? 0)")
 //                Text("위도 : \(String(cLocation.location!.coordinate.latitude))")
@@ -102,9 +105,32 @@ struct TimerView: View {
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("서버 연결 실패"), message: Text("서버에 연결할 수 없습니다."), dismissButton: .default(Text("확인")))
                 }
+                .alert(isPresented: $endButton) {
+                    Alert(
+                        title: Text("데이터 수집 종료"),
+                        message: Text("데이터 수집에 도움을 주셔서 감사드립니다.\n\n종료하시겠습니까?"),
+                        primaryButton: .default(Text("확인")) {
+                            cLocation.locationManager.stopUpdatingLocation()
+                            cLocation.stopTimer()
+                        },
+                        secondaryButton: .cancel(Text("취소")) // 취소 버튼
+                    )
+                }
+                .navigationTitle("데이터 수집")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("수집 종료") {
+                            endButton = true
+                            print(endButton)
+                        }
+                    }
+                }
         } // end of if weather != nil
         else{
-            Text("날씨 데이터 불러오는 중")
+            ProgressView(label: {
+                Text("날씨 데이터 불러오는 중")
+            })
         }
               
         Spacer()
@@ -138,6 +164,7 @@ struct TimerView: View {
                 // 성공적인 응답 처리
 //                self.responseData = value
                 print("성공")
+                count += 1
             case .failure(let error):
                 // 에러 응답 처리
                 print("Error: \(error.localizedDescription)")
