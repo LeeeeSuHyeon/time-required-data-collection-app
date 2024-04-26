@@ -20,6 +20,9 @@ struct MyInfoView: View {
     
     @State private var userInfoSaved = false // 사용자 정보가 저장되었는지 여부를 나타내는 상태 변수
     
+    @State var isOn = false
+    @State var showPrivacyTermsModal = false
+    
     // 입력 필드의 유효성을 확인하여 버튼을 활성화/비활성화할 수 있는 computed property
 //    var isButtonEnabled: Bool {
 //        // 모든 입력 필드가 비어있지 않고, 선택된 성별과 속도가 있다면 버튼을 활성화
@@ -29,6 +32,12 @@ struct MyInfoView: View {
     var body: some View {
         NavigationView {
             VStack{
+                Image("Gach")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                
+                
                 VStack(alignment: .leading){
                     Text("출생년도")
                     Picker("출생년도", selection: $birthYear) {
@@ -91,6 +100,28 @@ struct MyInfoView: View {
                     .padding()
                 }
                 
+                HStack {
+                    Toggle("", isOn: $isOn)
+                        .toggleStyle(CheckboxToggleStyle(style: .circle))
+                        .foregroundColor(.blue)
+                    
+                    Text("개인정보 수집 및 이용 동의 (필수)")
+                    //.font(.system(size: 15))
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.showPrivacyTermsModal = true
+                    }, label: {
+                        Text("보기")
+                            .foregroundColor(.gray)
+                            .sheet(isPresented: $showPrivacyTermsModal) {
+                                PrivacyTermsView()
+                            }
+                    })
+                }
+                .padding()
+                
                 // NavigationLink를 사용하여 userInfoSaved가 true일 때 TimerView로 이동
                 Button(action: {
                     saveUserInfo()
@@ -106,6 +137,7 @@ struct MyInfoView: View {
                     isActive: $userInfoSaved, // userInfoSaved가 true일 때 자동으로 TimerView로 이동
                     label: { EmptyView() }
                 ))
+                .disabled(!isOn)
             }
         }
     }
@@ -134,6 +166,37 @@ struct MyInfoView: View {
 
 }
 
+struct CheckboxToggleStyle: ToggleStyle {
+    @Environment(\.isEnabled) var isEnabled
+    let style: Style // custom param
+    
+    func makeBody(configuration: Configuration) -> some View {
+        Button(action: {
+            configuration.isOn.toggle() // toggle the state binding
+        }, label: {
+            HStack {
+                Image(systemName: configuration.isOn ? "checkmark.\(style.sfSymbolName).fill" : style.sfSymbolName)
+                    .imageScale(.large)
+                configuration.label
+            }
+        })
+        .buttonStyle(PlainButtonStyle()) // remove any implicit styling from the button
+        .disabled(!isEnabled)
+    }
+    enum Style {
+        case square, circle
+        
+        var sfSymbolName: String {
+            switch self {
+            case .square:
+                return "square"
+            case .circle:
+                return "circle"
+            }
+        }
+    }
+      
+}
 
 
 #Preview {

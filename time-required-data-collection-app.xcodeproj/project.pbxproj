@@ -12,6 +12,8 @@
 		CB0ED60D2BBEBB0E00A6BC11 /* point.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB0ED60C2BBEBB0E00A6BC11 /* point.csv */; };
 		CB0ED6102BBFD02000A6BC11 /* NodeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED60F2BBFD02000A6BC11 /* NodeTime.swift */; };
 		CB0ED6122BBFD82C00A6BC11 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0ED6112BBFD82C00A6BC11 /* Weather.swift */; };
+		CB585EBD2BDB7E99004B51A6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB585EBC2BDB7E99004B51A6 /* MainView.swift */; };
+		CB585EC02BDB82D1004B51A6 /* PrivacyTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB585EBF2BDB82D1004B51A6 /* PrivacyTermsView.swift */; };
 		CB8D093F2BC77058002F16D5 /* point2.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB8D093E2BC77057002F16D5 /* point2.csv */; };
 		CB8D09412BC8F0B4002F16D5 /* point3.csv in Resources */ = {isa = PBXBuildFile; fileRef = CB8D09402BC8F0B4002F16D5 /* point3.csv */; };
 		CBEA32F22BD66EDC0083D271 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEA32F12BD66EDC0083D271 /* TestView.swift */; };
@@ -40,6 +42,8 @@
 		CB0ED60C2BBEBB0E00A6BC11 /* point.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point.csv; sourceTree = "<group>"; };
 		CB0ED60F2BBFD02000A6BC11 /* NodeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTime.swift; sourceTree = "<group>"; };
 		CB0ED6112BBFD82C00A6BC11 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		CB585EBC2BDB7E99004B51A6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CB585EBF2BDB82D1004B51A6 /* PrivacyTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTermsView.swift; sourceTree = "<group>"; };
 		CB8D093E2BC77057002F16D5 /* point2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point2.csv; sourceTree = "<group>"; };
 		CB8D09402BC8F0B4002F16D5 /* point3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point3.csv; sourceTree = "<group>"; };
 		CBEA32F12BD66EDC0083D271 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,17 @@
 			path = Struct;
 			sourceTree = "<group>";
 		};
+		CB585EBE2BDB7F40004B51A6 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */,
+				CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */,
+				CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */,
+				CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		CBFBBF222BBE64E3009CF45F = {
 			isa = PBXGroup;
 			children = (
@@ -113,14 +128,19 @@
 		CBFBBF2D2BBE64E3009CF45F /* time-required-data-collection-app */ = {
 			isa = PBXGroup;
 			children = (
-				CBFBBF442BBE668F009CF45F /* Timer */,
 				CBFBBF2E2BBE64E3009CF45F /* time_required_data_collection_appApp.swift */,
+				CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */,
+				CBFBBF402BBE655E009CF45F /* CLocation.swift */,
+				CB585EBC2BDB7E99004B51A6 /* MainView.swift */,
+				CB585EBE2BDB7F40004B51A6 /* Weather */,
+				CBFBBF442BBE668F009CF45F /* Timer */,
 				CB0ED60C2BBEBB0E00A6BC11 /* point.csv */,
 				CB8D093E2BC77057002F16D5 /* point2.csv */,
 				CB8D09402BC8F0B4002F16D5 /* point3.csv */,
 				CBFBBF452BBE66B6009CF45F /* PathData.swift */,
 				CBFBBF322BBE64E4009CF45F /* Assets.xcassets */,
 				CBFBBF342BBE64E4009CF45F /* Preview Content */,
+				CB585EBF2BDB82D1004B51A6 /* PrivacyTermsView.swift */,
 			);
 			path = "time-required-data-collection-app";
 			sourceTree = "<group>";
@@ -140,13 +160,7 @@
 				CBFBBF4E2BBE8195009CF45F /* Model */,
 				CBFBBF3C2BBE6555009CF45F /* MyTimer.swift */,
 				CBFBBF3E2BBE655A009CF45F /* TimerView.swift */,
-				CBFBBF402BBE655E009CF45F /* CLocation.swift */,
 				CBFBBF422BBE6564009CF45F /* TimerMap.swift */,
-				CBFBBF4A2BBE7117009CF45F /* MyInfoView.swift */,
-				CBFBBF562BBE9043009CF45F /* WeatherExamView.swift */,
-				CBFBBF5A2BBE9EB7009CF45F /* MyXMLParserDelegate.swift */,
-				CBFBBF582BBE987A009CF45F /* ConvertGrid_GPS.swift */,
-				CB0ED60A2BBEB97700A6BC11 /* CsvFileParsing.swift */,
 				CBEA32F12BD66EDC0083D271 /* TestView.swift */,
 			);
 			path = Timer;
@@ -287,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBFBBF462BBE66B6009CF45F /* PathData.swift in Sources */,
+				CB585EBD2BDB7E99004B51A6 /* MainView.swift in Sources */,
 				CB0ED6122BBFD82C00A6BC11 /* Weather.swift in Sources */,
 				CBFBBF4B2BBE7117009CF45F /* MyInfoView.swift in Sources */,
 				CBFBBF432BBE6564009CF45F /* TimerMap.swift in Sources */,
@@ -298,6 +313,7 @@
 				CBFBBF4D2BBE7756009CF45F /* UserInfo.swift in Sources */,
 				CBFBBF592BBE987A009CF45F /* ConvertGrid_GPS.swift in Sources */,
 				CBFBBF5B2BBE9EB7009CF45F /* MyXMLParserDelegate.swift in Sources */,
+				CB585EC02BDB82D1004B51A6 /* PrivacyTermsView.swift in Sources */,
 				CBFBBF572BBE9043009CF45F /* WeatherExamView.swift in Sources */,
 				CBFBBF512BBE81C3009CF45F /* saveTimeRequest.swift in Sources */,
 				CBFBBF2F2BBE64E3009CF45F /* time_required_data_collection_appApp.swift in Sources */,
@@ -443,6 +459,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "time-required-data-collection-app/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = GachData;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "항상 위치 정보 허용";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는 동안만 위치 정보 제공";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -477,6 +494,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "time-required-data-collection-app/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = GachData;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "항상 위치 정보 허용";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는 동안만 위치 정보 제공";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
