@@ -225,7 +225,7 @@ struct CellView: View {
     
     var body: some View {
         Text(content)
-            .font(.system(size: 10))
+            .font(.system(size: 12))
             .frame(width: width, height: 30)
             .padding(.horizontal, 5)
             .border(Color.black)
